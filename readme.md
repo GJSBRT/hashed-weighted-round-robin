@@ -1,5 +1,5 @@
 # Hashed weighted round robin
-A HWRR is a load balancing algorithm that will distribute traffic between destinations based on a hash. 
+Hashed weighted round robin is a load balancing algorithm that will distribute traffic between destinations based on a hash and weight of backends.
 The hash could be generated from any thing realy but I am generating it from a tcp 4 tuple. The hash is then used to select a destination from a list of backends.
 The idea is that a tcp connection will always travel the same path. 
 
