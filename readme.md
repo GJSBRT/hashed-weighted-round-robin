@@ -10,6 +10,16 @@ If this algorithm already exists then please let me know. I have not been able t
 2. The hash is used to generate an index into a list of backends. The weight of the backend is used to determine how many times it is in the list.
 3. The backend at the index is selected.
 
+### Consitant path
+Because we use a hash to select a backend the path will always be the same for the same hash. This is useful for tcp connections for example as we do not want to load balance packets from the same connection to different backends as this results in broken connections.
+
+We can use this to our advangate when we want to use multiple load balancers in a network. These load balancers do not need to share any state as they will always select the same backend for the same hash. Because of this a router can evenly distribute packets between our load balancers and the load balancers will make sure the packets are sent to the same backend. Even when a load balancers fails the packets will still be sent to the same backend making for a very fault tolerant system.
+![Consitant Path](./images/hwrr-consitent-path.png)
+
+### Weighted backends
+The weight of a backend determines how many times it is in the list of backends. For example if we have 3 backends with weights 1, 1 and 3 then the list of backends will look like this.
+![Weighted backends](./images/hwrr-weighted-backends.png)
+
 ## Results
 ```
 goos: windows
