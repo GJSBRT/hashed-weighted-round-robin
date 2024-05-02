@@ -33,4 +33,16 @@ BenchmarkAllocationTestEvenWeight-8              4449729               261.4 ns/
 BenchmarkAllocationTestTopHeavyWeight-8          4535625               254.4 ns/op              60.00 backend1          20.00 backend2          20.00 backend3
 PASS
 ok      gijs.eu/hashed-weighted-round-robin     6.458s
+
+goos: windows
+goarch: amd64
+pkg: gijs.eu/hashed-weighted-round-robin
+cpu: AMD Ryzen 9 5950X 16-Core Processor
+BenchmarkGetNextBackend-32                      722669106                1.667 ns/op
+BenchmarkGetNextBackendWithSingleBackend-32     719955362                1.668 ns/op
+BenchmarkGetNextBackendWithZeroWeight-32        1000000000               0.4772 ns/op
+BenchmarkAllocationTestEvenWeight-32             6119890               192.7 ns/op              33.31 backend1          33.34 backend2          33.35 backend3
+BenchmarkAllocationTestTopHeavyWeight-32         5606396               187.7 ns/op              60.02 backend1          19.97 backend2          20.01 backend3
+PASS
+ok      gijs.eu/hashed-weighted-round-robin     6.036s
 ```
